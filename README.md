@@ -11,12 +11,6 @@ Website responsivo de catálogo construído com **HTML + CSS**, usando **CSS Gri
 layout de página, a partir do wireframe do Figma
 [`Catalogo_Responsivo`](https://www.figma.com/design/klRQfxzaVso7rn3q3oIbFE/Catalogo_Responsivo?node-id=0-1).
 
-## Resultado
-
-| Desktop | Mobile | Menu hambúrguer aberto |
-| --- | --- | --- |
-| ![Versão desktop](capturas/print-desktop.jpg) | ![Versão mobile](capturas/print-mobile.png) | ![Menu aberto](capturas/print-mobile-menu.png) |
-
 ## Como abrir
 
 Basta abrir o `index.html` no navegador — não há dependências nem etapa de build.
@@ -34,10 +28,9 @@ python -m http.server 8000
 .
 ├── index.html          # marcação semântica da página
 ├── css/style.css       # layout em CSS Grid, mobile first
-├── js/menu.js          # abre/fecha o menu hambúrguer (único uso de JS)
-├── img/                # logo, banners e imagens dos produtos (SVG)
-├── capturas/           # prints do resultado
-└── referencia/         # capturas do wireframe original do Figma
+├── js/menu.js          # abre/fecha o menu hambúrguer
+├── js/busca.js         # filtra os produtos pelo campo de busca
+└── img/                # logo, banners e imagens dos produtos (SVG)
 ```
 
 ## Requisitos da atividade
@@ -48,6 +41,16 @@ python -m http.server 8000
 | Textos e imagens | Catálogo com 8 produtos (imagem + título + descrição) e seção "Sobre" |
 | Menu hambúrguer no mobile | `.menu-hamburguer` + `js/menu.js`; some a partir de 768px |
 | Rodapé | `.rodape`, com empresa/endereço, telefone e redes sociais |
+
+## Busca
+
+O campo do cabeçalho filtra o catálogo enquanto você digita, sem recarregar a página
+(`js/busca.js`). A comparação ignora acentuação e maiúsculas — buscar por `mecanico` encontra
+"Teclado **Mecânico** TKL" — e considera título e descrição do produto.
+
+A quantidade de resultados é anunciada em uma região `aria-live`, e quando nada é encontrado
+aparece um aviso com o botão "Ver todos os produtos". O `submit` do formulário é interceptado,
+então a página nunca recarrega nem suja a URL.
 
 ## Boas práticas de responsividade aplicadas
 

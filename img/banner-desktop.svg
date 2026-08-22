@@ -6,7 +6,6 @@
     </linearGradient>
   </defs>
   <rect width="1600" height="400" fill="url(#bg)"/>
-  <!-- composicao horizontal: texto a esquerda, produtos alinhados em linha a direita -->
   <g fill="#ffffff" font-family="Segoe UI, Arial, sans-serif">
     <text x="80" y="150" font-size="58" font-weight="700">Cat&#225;logo de Acess&#243;rios 2026</text>
     <text x="80" y="215" font-size="30" opacity="0.9">Perif&#233;ricos, armazenamento e setup completo</text>

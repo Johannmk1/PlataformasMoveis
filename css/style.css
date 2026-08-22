@@ -1,11 +1,3 @@
-/* =========================================================================
-   XYZ Company — Catálogo Responsivo
-   Estratégia: MOBILE FIRST. O estilo base atende telas pequenas e as media
-   queries (min-width) vão acrescentando colunas conforme a tela cresce.
-   Todo o layout de página é feito com CSS GRID.
-   ========================================================================= */
-
-/* ---------- 1. Tokens e reset ---------- */
 :root {
   --cor-fundo: #ffffff;
   --cor-texto: #1f1f1f;
@@ -19,7 +11,7 @@
   --espaco-2: 1rem;
   --espaco-3: 1.5rem;
   --espaco-4: 2rem;
-  --largura-maxima: 75rem; /* 1200px */
+  --largura-maxima: 75rem;
   --raio: 0.5rem;
 }
 
@@ -32,7 +24,8 @@ h1, h2, h3, p, ul, figure { margin: 0; padding: 0; }
 
 ul { list-style: none; }
 
-/* Imagens fluidas: nunca estouram o contêiner do grid. */
+[hidden] { display: none !important; }
+
 img {
   display: block;
   max-width: 100%;
@@ -45,7 +38,6 @@ body {
   background-color: var(--cor-fundo);
   line-height: 1.5;
 
-  /* GRID PRINCIPAL DA PÁGINA: cabeçalho / conteúdo / rodapé */
   min-height: 100vh;
   min-height: 100dvh;
   display: grid;
@@ -59,7 +51,6 @@ a { color: inherit; }
   outline-offset: 2px;
 }
 
-/* Conteúdo lido por leitores de tela, invisível na tela. */
 .visualmente-oculto {
   position: absolute;
   width: 1px;
@@ -85,14 +76,12 @@ a { color: inherit; }
 
 .pular-para-conteudo:focus { top: var(--espaco-2); }
 
-/* ---------- 2. Cabeçalho (GRID com áreas) ---------- */
 .cabecalho {
   display: grid;
   gap: var(--espaco-2);
   padding: var(--espaco-2);
   border-bottom: 1px solid var(--cor-borda);
 
-  /* Mobile: logo + botão na primeira linha, busca abaixo, nav colapsada. */
   grid-template-columns: 1fr auto;
   grid-template-areas:
     "logo  botao"
@@ -111,7 +100,6 @@ a { color: inherit; }
   height: 4rem;
 }
 
-/* Botão hambúrguer — só aparece no mobile. */
 .menu-hamburguer {
   grid-area: botao;
   display: grid;
@@ -143,7 +131,6 @@ a { color: inherit; }
   clip-path: inset(50%);
 }
 
-/* Estado aberto: as barras viram um "X". */
 .menu-hamburguer[aria-expanded="true"] .menu-hamburguer__barra:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
@@ -156,7 +143,6 @@ a { color: inherit; }
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Busca */
 .busca {
   grid-area: busca;
   display: grid;
@@ -185,7 +171,6 @@ a { color: inherit; }
   cursor: pointer;
 }
 
-/* Navegação: fechada por padrão no mobile, aberta pelo hambúrguer. */
 .nav {
   grid-area: nav;
   display: none;
@@ -207,15 +192,12 @@ a { color: inherit; }
 
 .nav__link:hover { background: #f2f2f2; }
 
-/* ---------- 3. Banner ---------- */
 .banner__imagem {
   width: 100%;
-  /* A arte mobile é vertical e a desktop é widescreen: a altura acompanha. */
   max-height: 60vh;
   object-fit: cover;
 }
 
-/* ---------- 4. Catálogo (GRID de cards) ---------- */
 .catalogo {
   width: min(100%, var(--largura-maxima));
   margin-inline: auto;
@@ -233,14 +215,39 @@ a { color: inherit; }
   margin-bottom: var(--espaco-4);
 }
 
-/* Mobile: 2 colunas, como no Figma. */
+.catalogo__status {
+  margin-bottom: var(--espaco-2);
+  font-size: 0.875rem;
+  color: var(--cor-destaque);
+}
+
+.catalogo__vazio {
+  display: grid;
+  justify-items: start;
+  gap: var(--espaco-2);
+  padding: var(--espaco-3);
+  background: #f5f5f5;
+  border: 1px dashed #c4c4c4;
+  border-radius: var(--raio);
+  color: var(--cor-texto-suave);
+}
+
+.catalogo__limpar {
+  padding: 0.5rem 1rem;
+  font: inherit;
+  color: #fff;
+  background: var(--cor-destaque);
+  border: 0;
+  border-radius: var(--raio);
+  cursor: pointer;
+}
+
 .grade-produtos {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--espaco-3);
 }
 
-/* O card também é grid: mantém título e texto alinhados entre as colunas. */
 .card {
   height: 100%;
   display: grid;
@@ -266,7 +273,6 @@ a { color: inherit; }
   color: var(--cor-texto-suave);
 }
 
-/* ---------- 5. Sobre ---------- */
 .sobre {
   width: min(100%, var(--largura-maxima));
   margin-inline: auto;
@@ -283,7 +289,6 @@ a { color: inherit; }
   color: var(--cor-texto-suave);
 }
 
-/* ---------- 6. Rodapé (GRID com áreas) ---------- */
 .rodape {
   display: grid;
   gap: var(--espaco-2);
@@ -291,7 +296,6 @@ a { color: inherit; }
   background: var(--cor-rodape);
   color: #fff;
 
-  /* Mobile: endereço em cima, telefone e redes lado a lado. */
   grid-template-columns: 1fr auto;
   grid-template-areas:
     "empresa empresa"
@@ -333,11 +337,6 @@ a { color: inherit; }
   text-decoration: none;
 }
 
-/* =========================================================================
-   7. BREAKPOINTS
-   ========================================================================= */
-
-/* --- Tablet: 768px --- */
 @media (min-width: 48em) {
   .cabecalho {
     grid-template-columns: auto 1fr;
@@ -352,7 +351,6 @@ a { color: inherit; }
     height: 5rem;
   }
 
-  /* Sem hambúrguer no desktop: a navegação fica sempre visível. */
   .menu-hamburguer { display: none; }
 
   .busca {
@@ -386,7 +384,6 @@ a { color: inherit; }
   .rodape__social { justify-self: end; }
 }
 
-/* --- Desktop: 1024px — as 4 colunas do Figma --- */
 @media (min-width: 64em) {
   .grade-produtos {
     grid-template-columns: repeat(4, 1fr);
@@ -394,7 +391,6 @@ a { color: inherit; }
   }
 }
 
-/* --- Respeita quem pediu menos animação no sistema --- */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

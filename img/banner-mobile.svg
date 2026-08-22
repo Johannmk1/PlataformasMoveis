@@ -6,7 +6,6 @@
     </linearGradient>
   </defs>
   <rect width="780" height="560" fill="url(#bgm)"/>
-  <!-- composicao vertical: texto centralizado e maior, um unico produto em destaque -->
   <g fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
     <text x="390" y="110" font-size="66" font-weight="700">Cat&#225;logo</text>
     <text x="390" y="180" font-size="66" font-weight="700">2026</text>
