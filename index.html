@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>XYZ Company | Catálogo de Acessórios</title>
+  <meta name="description" content="Catálogo responsivo de acessórios de informática construído com CSS Grid.">
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="pular-para-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="cabecalho">
+    <a class="cabecalho__logo" href="#" aria-label="XYZ Company — página inicial">
+      <img src="img/logo.svg" alt="Logotipo da XYZ Company" width="120" height="120">
+    </a>
+
+    <button class="menu-hamburguer" type="button" aria-expanded="false" aria-controls="nav-principal">
+      <span class="menu-hamburguer__barra" aria-hidden="true"></span>
+      <span class="menu-hamburguer__barra" aria-hidden="true"></span>
+      <span class="menu-hamburguer__barra" aria-hidden="true"></span>
+      <span class="menu-hamburguer__texto">Menu</span>
+    </button>
+
+    <form class="busca" role="search" action="#" method="get">
+      <label class="visualmente-oculto" for="campo-busca">Buscar produtos no catálogo</label>
+      <input class="busca__campo" id="campo-busca" name="q" type="search" placeholder="Buscar produtos...">
+      <button class="busca__botao" type="submit">
+        <span class="visualmente-oculto">Buscar</span>
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+          <circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"></circle>
+          <path d="M15.5 15.5 L21 21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+      </button>
+    </form>
+
+    <nav class="nav" id="nav-principal" aria-label="Navegação principal">
+      <ul class="nav__lista">
+        <li><a class="nav__link" href="#catalogo">Catálogo</a></li>
+        <li><a class="nav__link" href="#sobre">Sobre</a></li>
+        <li><a class="nav__link" href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="conteudo">
+    <!--
+      Art direction: o navegador baixa APENAS a imagem correspondente à media query.
+      Telas grandes recebem uma arte widescreen; telas pequenas recebem uma arte vertical,
+      com composição própria (não é a mesma imagem redimensionada).
+    -->
+    <section class="banner" aria-label="Destaque do catálogo">
+      <picture>
+        <source media="(min-width: 768px)" srcset="img/banner-desktop.svg" width="1600" height="400">
+        <img class="banner__imagem" src="img/banner-mobile.svg"
+             alt="Banner do Catálogo 2026 de acessórios para computador"
+             width="780" height="560" fetchpriority="high">
+      </picture>
+    </section>
+
+    <section class="catalogo" id="catalogo" aria-labelledby="titulo-catalogo">
+      <h1 class="catalogo__titulo" id="titulo-catalogo">Catálogo de produtos</h1>
+      <p class="catalogo__descricao">
+        Acessórios selecionados para montar ou renovar o seu setup. Preços e disponibilidade
+        podem variar conforme a região de entrega.
+      </p>
+
+      <ul class="grade-produtos">
+        <li>
+          <article class="card">
+            <img class="card__imagem" src="img/produto-01.svg" alt="Teclado mecânico compacto"
+                 width="600" height="600" loading="lazy" decoding="async">
+            <h2 class="card__titulo">Teclado Mecânico TKL</h2>
+            <p class="card__texto">Switches lineares, layout ABNT2 e iluminação regulável.</p>
+          </article>
+        </li>
+        <li>
+          <article class="card">
+            <img class="card__imagem" src="img/produto-02.svg" alt="Mouse sem fio ergonômico"
+                 width="600" height="600" loading="lazy" decoding="async">
+            <h2 class="card__titulo">Mouse Sem Fio Ergonômico</h2>
+            <p class="card__texto">Sensor de 16.000 DPI e bateria de até 70 horas de uso.</p>
+          </article>
+        </li>
+        <li>
+          <article class="card">
+            <img class="card__imagem" src="img/produto-03.svg" alt="Headset com microfone"
+                 width="600" height="600" loading="lazy" decoding="async">
+            <h2 class="card__titulo">Headset com Microfone</h2>
+            <p class="card__texto">Drivers de 50 mm, espuma memory foam e cancelamento de ruído.</p>
+          </article>
+        </li>
+        <li>
+          <article class="card">
+            <img class="card__imagem" src="img/produto-04.svg" alt="Monitor de 24 polegadas"
+                 width="600" height="600" loading="lazy" decoding="async">
+            <h2 class="card__titulo">Monitor 24" Full HD</h2>
+            <p class="card__texto">Painel IPS de 75 Hz com ajuste de altura e entrada HDMI.</p>
+          </article>
+        </li>
+        <li>
+          <article class="card">
+            <img class="card__imagem" src="img/produto-05.svg" alt="Webcam Full HD"
+                 width="600" height="600" loading="lazy" decoding="async">
+            <h2 class="card__titulo">Webcam Full HD</h2>
+            <p class="card__texto">Gravação em 1080p a 60 fps com foco automático e tampa de privacidade.</p>
+          </article>
+        </li>
+        <li>
+          <article class="card">
+            <img class="card__imagem" src="img/produto-06.svg" alt="Hub USB-C com várias portas"
+                 width="600" height="600" loading="lazy" decoding="async">
+            <h2 class="card__titulo">Hub USB-C 7 em 1</h2>
+            <p class="card__texto">HDMI 4K, leitor de cartões e carregamento de 100 W.</p>
+          </article>
+        </li>
+        <li>
+          <article class="card">
+            <img class="card__imagem" src="img/produto-07.svg" alt="SSD externo portátil"
+                 width="600" height="600" loading="lazy" decoding="async">
+            <h2 class="card__titulo">SSD Externo 1 TB</h2>
+            <p class="card__texto">Leitura de até 1050 MB/s em corpo resistente a quedas.</p>
+          </article>
+        </li>
+        <li>
+          <article class="card">
+            <img class="card__imagem" src="img/produto-08.svg" alt="Suporte para notebook"
+                 width="600" height="600" loading="lazy" decoding="async">
+            <h2 class="card__titulo">Suporte para Notebook</h2>
+            <p class="card__texto">Alumínio com sete níveis de altura e ventilação ampliada.</p>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <section class="sobre" id="sobre" aria-labelledby="titulo-sobre">
+      <h2 class="sobre__titulo" id="titulo-sobre">Sobre a XYZ Company</h2>
+      <p>
+        Trabalhamos com acessórios de informática desde 2015, atendendo estudantes, escritórios e
+        criadores de conteúdo. Todo o catálogo tem garantia de 12 meses e suporte técnico próprio.
+      </p>
+    </section>
+  </main>
+
+  <footer class="rodape" id="contato">
+    <div class="rodape__empresa">
+      <p class="rodape__marca">XYZ Company</p>
+      <p>Rua das Palmeiras, 250 — Centro</p>
+      <p>Rio do Sul — SC, 89160-000</p>
+    </div>
+
+    <p class="rodape__telefone">
+      <a href="tel:+554999999999">(99) 9999-999</a>
+    </p>
+
+    <ul class="rodape__social" aria-label="Redes sociais">
+      <li><a href="#" aria-label="Instagram da XYZ Company"><span aria-hidden="true">IG</span></a></li>
+      <li><a href="#" aria-label="Facebook da XYZ Company"><span aria-hidden="true">FB</span></a></li>
+      <li><a href="#" aria-label="LinkedIn da XYZ Company"><span aria-hidden="true">IN</span></a></li>
+    </ul>
+  </footer>
+
+  <script src="js/menu.js" defer></script>
+</body>
+</html>

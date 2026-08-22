@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Ilustracao de headset">
+  <rect width="600" height="600" fill="#d9d9d9"/>
+  <g fill="none" stroke="#8c8c8c" stroke-width="14" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M160 330v-40a140 140 0 0 1 280 0v40"/>
+    <rect x="120" y="320" width="80" height="120" rx="24"/>
+    <rect x="400" y="320" width="80" height="120" rx="24"/>
+  </g>
+</svg>

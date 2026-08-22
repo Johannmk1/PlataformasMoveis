@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 560" width="780" height="560" role="img"
+     aria-label="Banner promocional em formato vertical para telas pequenas">
+  <defs>
+    <linearGradient id="bgm" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1f3a5f"/><stop offset="1" stop-color="#3f7cac"/>
+    </linearGradient>
+  </defs>
+  <rect width="780" height="560" fill="url(#bgm)"/>
+  <!-- composicao vertical: texto centralizado e maior, um unico produto em destaque -->
+  <g fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
+    <text x="390" y="110" font-size="66" font-weight="700">Cat&#225;logo</text>
+    <text x="390" y="180" font-size="66" font-weight="700">2026</text>
+    <text x="390" y="240" font-size="32" opacity="0.9">Acess&#243;rios para o seu setup</text>
+  </g>
+  <g opacity="0.95">
+    <rect x="240" y="280" width="300" height="180" rx="20" fill="#ffffff" opacity="0.2"/>
+    <circle cx="330" cy="370" r="52" fill="#f4d35e"/>
+    <rect x="410" y="335" width="100" height="70" rx="12" fill="#43aa8b"/>
+  </g>
+  <rect x="255" y="484" width="270" height="56" rx="28" fill="#f4d35e"/>
+  <text x="390" y="521" font-size="26" font-weight="700" text-anchor="middle"
+        font-family="Segoe UI, Arial, sans-serif" fill="#1f3a5f">Ver ofertas</text>
+  <text x="390" y="466" font-size="16" text-anchor="middle" opacity="0.65"
+        font-family="Segoe UI, Arial, sans-serif" fill="#ffffff">banner-mobile.svg &#183; 780&#215;560</text>
+</svg>

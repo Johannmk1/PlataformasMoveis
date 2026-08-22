@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Ilustracao de suporte para notebook">
+  <rect width="600" height="600" fill="#d9d9d9"/>
+  <g fill="none" stroke="#8c8c8c" stroke-width="14" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M150 420l160-220h140l-160 220z"/>
+    <path d="M150 420h300"/>
+    <path d="M240 300h180"/>
+  </g>
+</svg>

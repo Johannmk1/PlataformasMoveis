@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Ilustracao de teclado mecanico">
+  <rect width="600" height="600" fill="#d9d9d9"/>
+  <g fill="none" stroke="#8c8c8c" stroke-width="14" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="110" y="220" width="380" height="180" rx="18"/>
+    <path d="M160 270h280M160 320h280M200 370h200"/>
+  </g>
+</svg>

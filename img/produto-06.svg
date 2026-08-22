@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Ilustracao de hub USB-C">
+  <rect width="600" height="600" fill="#d9d9d9"/>
+  <g fill="none" stroke="#8c8c8c" stroke-width="14" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="120" y="250" width="360" height="110" rx="30"/>
+    <path d="M190 250v-70M300 250v-70M410 250v-70"/>
+  </g>
+</svg>

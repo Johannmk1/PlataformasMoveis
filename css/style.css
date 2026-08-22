@@ -1,0 +1,405 @@
+/* =========================================================================
+   XYZ Company — Catálogo Responsivo
+   Estratégia: MOBILE FIRST. O estilo base atende telas pequenas e as media
+   queries (min-width) vão acrescentando colunas conforme a tela cresce.
+   Todo o layout de página é feito com CSS GRID.
+   ========================================================================= */
+
+/* ---------- 1. Tokens e reset ---------- */
+:root {
+  --cor-fundo: #ffffff;
+  --cor-texto: #1f1f1f;
+  --cor-texto-suave: #5a5a5a;
+  --cor-placeholder: #d9d9d9;
+  --cor-rodape: #8c8c8c;
+  --cor-destaque: #1f3a5f;
+  --cor-borda: #e4e4e4;
+
+  --espaco-1: 0.5rem;
+  --espaco-2: 1rem;
+  --espaco-3: 1.5rem;
+  --espaco-4: 2rem;
+  --largura-maxima: 75rem; /* 1200px */
+  --raio: 0.5rem;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+body,
+h1, h2, h3, p, ul, figure { margin: 0; padding: 0; }
+
+ul { list-style: none; }
+
+/* Imagens fluidas: nunca estouram o contêiner do grid. */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+  line-height: 1.5;
+
+  /* GRID PRINCIPAL DA PÁGINA: cabeçalho / conteúdo / rodapé */
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--cor-destaque);
+  outline-offset: 2px;
+}
+
+/* Conteúdo lido por leitores de tela, invisível na tela. */
+.visualmente-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.pular-para-conteudo {
+  position: absolute;
+  left: var(--espaco-2);
+  top: -3rem;
+  z-index: 10;
+  padding: var(--espaco-1) var(--espaco-2);
+  background: var(--cor-destaque);
+  color: #fff;
+  border-radius: var(--raio);
+  transition: top 0.2s ease;
+}
+
+.pular-para-conteudo:focus { top: var(--espaco-2); }
+
+/* ---------- 2. Cabeçalho (GRID com áreas) ---------- */
+.cabecalho {
+  display: grid;
+  gap: var(--espaco-2);
+  padding: var(--espaco-2);
+  border-bottom: 1px solid var(--cor-borda);
+
+  /* Mobile: logo + botão na primeira linha, busca abaixo, nav colapsada. */
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "logo  botao"
+    "busca busca"
+    "nav   nav";
+  align-items: center;
+}
+
+.cabecalho__logo {
+  grid-area: logo;
+  justify-self: center;
+}
+
+.cabecalho__logo img {
+  width: 4rem;
+  height: 4rem;
+}
+
+/* Botão hambúrguer — só aparece no mobile. */
+.menu-hamburguer {
+  grid-area: botao;
+  display: grid;
+  gap: 5px;
+  justify-items: center;
+  align-content: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.6rem;
+  background: var(--cor-placeholder);
+  border: 1px solid #c4c4c4;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.menu-hamburguer__barra {
+  width: 100%;
+  height: 3px;
+  background: var(--cor-texto);
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.menu-hamburguer__texto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+/* Estado aberto: as barras viram um "X". */
+.menu-hamburguer[aria-expanded="true"] .menu-hamburguer__barra:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-hamburguer[aria-expanded="true"] .menu-hamburguer__barra:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-hamburguer[aria-expanded="true"] .menu-hamburguer__barra:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Busca */
+.busca {
+  grid-area: busca;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--espaco-1);
+  align-items: center;
+}
+
+.busca__campo {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font: inherit;
+  background: var(--cor-placeholder);
+  border: 1px solid #c4c4c4;
+  border-radius: 0.25rem;
+}
+
+.busca__botao {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  background: none;
+  border: 0;
+  color: var(--cor-texto-suave);
+  cursor: pointer;
+}
+
+/* Navegação: fechada por padrão no mobile, aberta pelo hambúrguer. */
+.nav {
+  grid-area: nav;
+  display: none;
+}
+
+.nav.aberto { display: block; }
+
+.nav__lista {
+  display: grid;
+  gap: var(--espaco-1);
+}
+
+.nav__link {
+  display: block;
+  padding: 0.6rem var(--espaco-1);
+  text-decoration: none;
+  border-radius: var(--raio);
+}
+
+.nav__link:hover { background: #f2f2f2; }
+
+/* ---------- 3. Banner ---------- */
+.banner__imagem {
+  width: 100%;
+  /* A arte mobile é vertical e a desktop é widescreen: a altura acompanha. */
+  max-height: 60vh;
+  object-fit: cover;
+}
+
+/* ---------- 4. Catálogo (GRID de cards) ---------- */
+.catalogo {
+  width: min(100%, var(--largura-maxima));
+  margin-inline: auto;
+  padding: var(--espaco-4) var(--espaco-2);
+}
+
+.catalogo__titulo {
+  font-size: clamp(1.5rem, 1.1rem + 2vw, 2.25rem);
+  margin-bottom: var(--espaco-1);
+}
+
+.catalogo__descricao {
+  color: var(--cor-texto-suave);
+  max-width: 60ch;
+  margin-bottom: var(--espaco-4);
+}
+
+/* Mobile: 2 colunas, como no Figma. */
+.grade-produtos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--espaco-3);
+}
+
+/* O card também é grid: mantém título e texto alinhados entre as colunas. */
+.card {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: var(--espaco-1);
+}
+
+.card__imagem {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: var(--cor-placeholder);
+  border-radius: var(--raio);
+}
+
+.card__titulo {
+  font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.15rem);
+  font-weight: 600;
+}
+
+.card__texto {
+  font-size: 0.875rem;
+  color: var(--cor-texto-suave);
+}
+
+/* ---------- 5. Sobre ---------- */
+.sobre {
+  width: min(100%, var(--largura-maxima));
+  margin-inline: auto;
+  padding: 0 var(--espaco-2) var(--espaco-4);
+}
+
+.sobre__titulo {
+  font-size: clamp(1.25rem, 1rem + 1.2vw, 1.75rem);
+  margin-bottom: var(--espaco-1);
+}
+
+.sobre p {
+  max-width: 65ch;
+  color: var(--cor-texto-suave);
+}
+
+/* ---------- 6. Rodapé (GRID com áreas) ---------- */
+.rodape {
+  display: grid;
+  gap: var(--espaco-2);
+  padding: var(--espaco-3) var(--espaco-2);
+  background: var(--cor-rodape);
+  color: #fff;
+
+  /* Mobile: endereço em cima, telefone e redes lado a lado. */
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "empresa empresa"
+    "tel     social";
+  align-items: center;
+}
+
+.rodape__empresa {
+  grid-area: empresa;
+  font-size: 0.875rem;
+}
+
+.rodape__marca { font-weight: 700; }
+
+.rodape__telefone {
+  grid-area: tel;
+  font-size: 1.05rem;
+}
+
+.rodape__telefone a { text-decoration: none; }
+
+.rodape__social {
+  grid-area: social;
+  display: grid;
+  grid-auto-flow: column;
+  gap: var(--espaco-1);
+}
+
+.rodape__social a {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cor-texto);
+  background: var(--cor-placeholder);
+  border-radius: 0.25rem;
+  text-decoration: none;
+}
+
+/* =========================================================================
+   7. BREAKPOINTS
+   ========================================================================= */
+
+/* --- Tablet: 768px --- */
+@media (min-width: 48em) {
+  .cabecalho {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "logo busca"
+      "logo nav";
+    padding: var(--espaco-2) var(--espaco-4);
+  }
+
+  .cabecalho__logo img {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  /* Sem hambúrguer no desktop: a navegação fica sempre visível. */
+  .menu-hamburguer { display: none; }
+
+  .busca {
+    justify-self: end;
+    width: min(100%, 26rem);
+  }
+
+  .nav {
+    display: block;
+    justify-self: end;
+  }
+
+  .nav__lista {
+    grid-auto-flow: column;
+    gap: var(--espaco-3);
+  }
+
+  .grade-produtos { grid-template-columns: repeat(3, 1fr); }
+
+  .rodape {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "empresa tel social";
+    padding: var(--espaco-4);
+  }
+
+  .rodape__telefone {
+    justify-self: center;
+    font-size: 1.25rem;
+  }
+
+  .rodape__social { justify-self: end; }
+}
+
+/* --- Desktop: 1024px — as 4 colunas do Figma --- */
+@media (min-width: 64em) {
+  .grade-produtos {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--espaco-4);
+  }
+}
+
+/* --- Respeita quem pediu menos animação no sistema --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Ilustracao de SSD externo">
+  <rect width="600" height="600" fill="#d9d9d9"/>
+  <g fill="none" stroke="#8c8c8c" stroke-width="14" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="140" y="200" width="320" height="200" rx="24"/>
+    <path d="M200 260h200M200 320h120"/>
+    <circle cx="420" cy="330" r="18"/>
+  </g>
+</svg>
