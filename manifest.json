@@ -1,0 +1,48 @@
+{
+"name": "catalogo resposnivo",
+"short_name": "catalogoResp",
+"start_url": ".",
+"display": "standalone",
+"description": "Catálogo Responsivo BSN",
+"lang": "pt-BR",
+"dir": "auto",
+"theme_color": "#1f3a5f",
+"background_color": "#ffffff",
+"orientation": "any",
+"icons": [
+    {
+        "src": "img/logo.svg",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "img/logo.svg",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any"
+    }
+],
+"screenshots": [
+    {
+        "src": "img/Capturadetela.png",
+        "sizes": "1900x950",
+        "type": "image/png",
+        "description": "A screenshot of the home page"
+    }
+],
+"related_applications": [
+    {
+        "platform":"windows",
+        "url": "file:///C:/Users/1037902/Documents/PWA/PlataformasMoveis/index.html"
+    }
+],
+"prefer_related_applications": false,
+"shortcuts": [
+    {
+        "name":"Catálogo Responsivo - HOME",
+        "url":"file:///C:/Users/1037902/Documents/PWA/PlataformasMoveis/index.html",
+        "description":"Acesso ao Catálogo Responsivo"
+    }
+]
+}
